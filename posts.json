@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": "Date.now",
+      "user_name": "anonymous",
+      "text_content": "lorem ipsum",
+      "bg_img": "img.jpg",
+      "comment": [
+        { "id": "Date.now", "comment_text": "" },
+        { "id": "Date.now", "comment_text": "" }
+      ],
+      "isLike": false
+    },
+    {
+      "id": "Date.now",
+      "user_name": "anonymous",
+      "text_content": "lorem ipsum",
+      "bg_img": "img.jpg",
+      "comment": [
+        { "id": "Date.now", "comment_text": "" },
+        { "id": "Date.now", "comment_text": "" }
+      ],
+      "isLike": false
+    }
+  ]
+}
