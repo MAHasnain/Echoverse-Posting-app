@@ -22,13 +22,11 @@
 
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand">Echoverse</a>
-
+      <a href="#home_section" class="navbar-brand prevent-select">Echoverse</a>
       <div class="nav-items">
-
-        <ul class="nav-links d-flex">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Featured Echos</a></li>
+        <ul class="nav-links d-flex prevent-select">
+          <li><a href="#home_section">Home</a></li>
+          <li><a href="#featured_echos">Featured Echos</a></li>
           <li><a href="#">How It Works</a></li>
           <li><a href="#">Get Started</a></li>
         </ul>
@@ -37,50 +35,48 @@
   </nav>
 
   <section>
-    <div class="container hero-section">
+    <div class="container hero-section" id="home_section">
+      <div class="">
+        <h1 class="prevent-select">Welcome to Echoverse</h1>
+        <p>Your universe of thoughts, memories, and expressions <b>all in one place.</b></p>
+        <div class="cta-buttons">
+          <a href="#post_creation_form" type="button" onclick="startPosting()" id="posting-btn" class="btn ">
+            Start Posting
+          </a>
+        </div>
+        <p class="small-text">No sign-up needed • 100% Free • Built for Expression</p>
+      </div>
+    </div>
 
-      <h1>Welcome to Echoverse</h1>
+    <div class="container hidden post-creation-form">
+      <div class="form" id="post_creation_form">
+        <input type="text" name="" placeholder="Write Your name here" id="post-username">
+        <div class="post_content">
 
-      <p>Your universe of thoughts, memories, and expressions <b>all in one place.</b></p>
+          <textarea id="post-text_content" name="" placeholder="Type your thoughts and let them echo…" rows="10"
+            cols=60"></textarea>
 
+          <!-- select the bg image of post -->
+          <div class="post_bg-img prevent-select">
 
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Start Posting
-      </button>
-      <button type="button" class="btn btn-primary">
-        Explore Features
-      </button>
-
-      <!-- Button trigger modal -->
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Create Echo</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="delete-btn">
+              <a onclick="">
+                <span class="material-symbols-outlined">
+                  cancel
+                </span>
+              </a>
             </div>
           </div>
         </div>
+
+        <button onclick="postCreation()" class="btn" id="post-creation-btn" type="submit">Echo it</button>
       </div>
-
-      <p class="small-text">No sign-up needed • 100% Free • Built for Expression</p>
-
     </div>
 
-    <div class="container posts-section">
+    <div class="container hidden posts-section" id="featured_echos">
       <h3>Featured Echos</h3>
       <div class="posts">
+
         <div class="card" style="width: 18rem;">
           <img src="./result.jpg" class="card-img-top" alt="">
           <div class="card-body">
@@ -92,39 +88,55 @@
 
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s
               content.</p>
-            <a href="#" class="btn btn-primary me-md-2"><span class="material-symbols-outlined">
-                thumb_up
-              </span>like</a>
-            <a href="#" class="btn btn-primary me-md-2"><span class="material-symbols-outlined">
-                chat
-              </span>comment</a>
+            <div class="btns">
+              <a href="" id="likeBtn" onclick="addLike()" class="btn "><span class="material-symbols-outlined">
+                  thumb_up
+                </span>like</a>
+              <a href="" class="btn"><span class="material-symbols-outlined">
+                  chat
+                </span>comment</a>
+            </div>
           </div>
-          <p class="comment">hello comment</p>
+          <div class="users_comments">
+
+            <p class="comment">hello comment</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container footer-section">
+    <div class="container footer-section prevent-select">
+
+      <div class="social_media_icons">
+        <a href="#">
+          <h2>
+            Echoverse
+          </h2>
+        </a>
+        <a href="https://github.com/MAHasnain" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+      </div>
+
+      <ul class=" footer-links">
+        <li><a href="#home_section">Home</a></li>
+        <li><a href="#featured_echos">Featured Echos</a></li>
+        <li><a href="#">Get Started</a></li>
+      </ul>
+
       <ul class="footer-links">
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms of Service</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
 
-
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
-
-      <div class="sub-Footer">
-        <p>© 2025 Echoverse. All rights reserved.</p>
-      </div>
-
+    </div>
+    <div class="sub-Footer prevent-select">
+      <p>© 2025 <b>Echoverse</b>. All rights reserved.</p>
     </div>
   </footer>
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
@@ -132,6 +144,7 @@
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/6c4078df96.js" crossorigin="anonymous"></script>
   <script src="app.js"></script>
+
 </body>
 
 </html>
