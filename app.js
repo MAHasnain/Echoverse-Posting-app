@@ -80,7 +80,7 @@ function postCardDisplay() {
     for (let i = 0; i <= posts.length; i++) {
 
         allPosts.innerHTML += `<div class="card" style="width: 18rem;">
-          <img src="./result.jpg" class="card-img-top" alt="">
+        <img src="./images/bg_img (1).jpg" alt="">
           <div class="card-body">
             <div class="user_dets">
               <div class="user-img-circle"></div>
