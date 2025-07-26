@@ -272,6 +272,21 @@ body {
   box-shadow: 0 0 5px #00FFF7;
 }
 
+.user-img-circle {
+  background-color: var(--deepBlack);
+  border: solid 1px #00FFF7;
+  border-radius: 50%;
+  width:  35px;
+  height:  35px;
+}
+
+.user_dets {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+ align-items: center;
+}
+
 .card-body {
   padding: 8px 0;
 }
@@ -298,7 +313,12 @@ body {
   box-shadow: 0 0 2px #00FFF7;
   color: white;
 }
-.card-text {}
+.card-text {
+  padding: 10px;
+}
+.post_time {
+  font-size: small;
+}
 
 .btns a>span {
   font-size: 20px;

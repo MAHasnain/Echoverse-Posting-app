@@ -53,7 +53,7 @@
         <input type="text" name="" placeholder="Write Your name here" id="post-username">
         <div class="post_content">
 
-          <textarea id="post-text_content" name="" placeholder="Type your thoughts and let them echo…" rows="10"
+          <textarea id="post-text_area" name="" placeholder="Type your thoughts and let them echo…" rows="10"
             cols=60"></textarea>
 
           <!-- select the bg image of post -->
@@ -73,36 +73,11 @@
       </div>
     </div>
 
-    <div class="container hidden posts-section" id="featured_echos">
-      <h3>Featured Echos</h3>
-      <div class="posts">
-
-        <div class="card" style="width: 18rem;">
-          <img src="./result.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <div class="user-img-circle"></div>
-            <div class="user_dets">
-              <h5 class="card-title">Anonymous</h5>
-              <span id="post_time" class="post_time">00:00</span>
-            </div>
-
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s
-              content.</p>
-            <div class="btns">
-              <a href="" id="likeBtn" onclick="addLike()" class="btn "><span class="material-symbols-outlined">
-                  thumb_up
-                </span>like</a>
-              <a href="" class="btn"><span class="material-symbols-outlined">
-                  chat
-                </span>comment</a>
-            </div>
-          </div>
-          <div class="users_comments">
-
-            <p class="comment">hello comment</p>
-          </div>
-        </div>
+    <div class="container posts-section">
+      <h3 class="hidden prevent-select" id="featured_echos">Featured Echos</h3>
+      <div class="posts" id="all_posts">
       </div>
+      
     </div>
   </section>
 
@@ -138,6 +113,10 @@
     </div>
   </footer>
 
+  <!-- Moment js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
+    integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
