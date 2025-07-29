@@ -91,16 +91,15 @@ function postCardDisplay() {
               <a href="" id="likeBtn" onclick="addLike()" class="btn "><span class="material-symbols-outlined">
                   thumb_up
                 </span>like</a>
-              <a onclick="addComment()" id="comment-btn" class="btn"><span class="material-symbols-outlined">
+              <a onclick="addComment(${i})" id="comment-btn" class="btn"><span class="material-symbols-outlined">
                   chat
                 </span>comment</a>
             </div>
-            <div class="users_comments" id="users_comment_Sec">
-            <p class="comment" id="comment-username"></p>
-            <p class="comment" id="comment-text"></p>
+            <div class="users_comments" id="users_comment_Sec_${i}">
+                <div id="1">
+                </div>
+            </div>
           </div>
-          </div>
-          
         </div>`;
     }
 }
@@ -115,9 +114,9 @@ function addLike() {
     likeBtn.style.color = "#E5E7EB"
 }
 
-function addComment() {
+function addComment(comment_id = 0) {
     const comment_btn = document.querySelector("#comment-btn");
-    const userCommentsDiv = document.getElementById("users_comment_Sec");
+    const userCommentsDiv = document.getElementById("users_comment_Sec_" + comment_id);
 
     event.preventDefault();
 
@@ -126,12 +125,12 @@ function addComment() {
     commentInputBox.id = "comment_input-and-btn";
     commentInputBox.innerHTML = `<input id="comment_userName" type="text">
         <input id="comment_text" type="text">
-        <button onClick="sendComment()"><span class="material-symbols-outlined">send</span></button>`
+        <button onClick="sendComment(${comment_id})"><span class="material-symbols-outlined">send</span></button>`
     userCommentsDiv.insertBefore(commentInputBox, userCommentsDiv.firstChild);
     comment_btn.classList.add("disabled");
 }
 
-function sendComment() {
+function sendComment(comment_id_send = 0) {
     // hide the input div
     // taking data from input and store in array and objects 
     // display data at the DOM
@@ -145,20 +144,27 @@ function sendComment() {
     if (commentTxtInput.value === "") {
         return;
     }
-    let id = 0
+    let id = 0;
     for (let i = 0; i < posts.length; i++) {
         id++;
         posts[i].post_comment.push({ id: id, comment_username: commentUsernameInput.value || "Anonymous", comment_text: commentTxtInput.value });
     }
+
+    let comment_Username = commentUsernameInput.value == '' ? 'Anonymous' : commentUsernameInput.value;
+    // for (let i = 0; i < posts.length; i++) {
+    // commentUsername.textContent = `${posts[i].post_comment[i].comment_username}`
+    // commentText.textContent = `${posts[i].post_comment[i].comment_text}`
+    let comment_id = document.getElementById('users_comment_Sec_' + comment_id_send).children.length;
+    var comment_div = document.createElement('div');
+    comment_div.id = comment_id - 1;
+    comment_div.innerHTML = `<p class="comment" id="comment-username">${comment_Username}</p>
+                    <p class="comment" id="comment-text">${commentTxtInput.value}</p>`;
+    document.getElementById('users_comment_Sec_' + comment_id_send).append(comment_div);
+    document.querySelector("#comment_input-and-btn").classList.add("hidden")
+    document.querySelector("#comment-btn").classList.remove("disabled");
+    // }
     commentUsernameInput.value = "";
     commentTxtInput.value = "";
-    for (let i = 0; i < posts.length; i++) {
-        commentUsername.textContent = `${posts[i].post_comment[i].comment_username}`
-        commentText.textContent = `${posts[i].post_comment[i].comment_text}`
-
-        document.querySelector("#comment_input-and-btn").classList.add("hidden")
-        document.querySelector("#comment-btn").classList.remove("disabled");
-    }
 }
 
 function editComment() {
