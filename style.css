@@ -276,15 +276,15 @@ body {
   background-color: var(--deepBlack);
   border: solid 1px #00FFF7;
   border-radius: 50%;
-  width:  35px;
-  height:  35px;
+  width: 35px;
+  height: 35px;
 }
 
 .user_dets {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
- align-items: center;
+  align-items: center;
 }
 
 .card-body {
@@ -313,9 +313,11 @@ body {
   box-shadow: 0 0 2px #00FFF7;
   color: white;
 }
+
 .card-text {
   padding: 10px;
 }
+
 .post_time {
   font-size: small;
 }
@@ -325,8 +327,23 @@ body {
   margin-right: 3px;
 }
 
-.users_comments{
+.users_comments {
   margin-top: 20px;
+}
+.users_comments p{
+  font-size: small;
+}
+
+.comment_input-and-btn{}
+#comment_text{}
+#comment_userName{}
+
+.disabled:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* Footer Section */

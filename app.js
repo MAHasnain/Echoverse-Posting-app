@@ -1,7 +1,6 @@
 // HTML elements in JS vars
 const postCreationBtn = document.querySelector("#post-creation-btn");
 const postingBtn = document.querySelector("#posting-btn");
-const likeBtn = document.getElementById("likeBtn");
 const postBgImg = document.querySelector(".post_bg-img")
 const postCreationForm = document.querySelector(".post-creation-form")
 const post_username = document.querySelector("#post-username")
@@ -9,13 +8,10 @@ const username_display = document.querySelector("#username-display");
 const post_time = document.querySelector("#post_time")
 const card_text_content = document.getElementById("card-text_content");
 const post_text_area = document.querySelector("#post-text_area")
-const comment_btn = document.querySelector("#comment-btn");
-const comment_text = document.querySelector("#comment-text");
 const featured_posts = document.querySelector("#featured_echos");
 const allPosts = document.getElementById("all_posts")
-const userCommentsDiv = document.getElementById("users_comment_Sec");
-const commentUsername = document.querySelector("#comment_userName");
-const commentTxtInput = document.querySelector("#comment_text");
+
+
 
 // const d = new Date();
 // const current_time = d.toLocaleTimeString();
@@ -80,7 +76,7 @@ function postCardDisplay() {
     for (let i = 0; i <= posts.length; i++) {
 
         allPosts.innerHTML += `<div class="card" style="width: 18rem;">
-        <img src="./images/bg_img (1).jpg" alt="">
+        <img src="./images/bg_img (1).jpg" width="265px"  alt="">
           <div class="card-body">
             <div class="user_dets">
               <div class="user-img-circle"></div>
@@ -99,10 +95,12 @@ function postCardDisplay() {
                   chat
                 </span>comment</a>
             </div>
-          </div>
-          <div class="users_comments" id="users_comment_Sec">
+            <div class="users_comments" id="users_comment_Sec">
+            <p class="comment" id="comment-username"></p>
             <p class="comment" id="comment-text"></p>
           </div>
+          </div>
+          
         </div>`;
     }
 }
@@ -111,12 +109,16 @@ function postCardDisplay() {
 
 
 function addLike() {
+    const likeBtn = document.getElementById("likeBtn");
     event.preventDefault();
     likeBtn.style.backgroundColor = "#7F00FF"
     likeBtn.style.color = "#E5E7EB"
 }
 
 function addComment() {
+    const comment_btn = document.querySelector("#comment-btn");
+    const userCommentsDiv = document.getElementById("users_comment_Sec");
+
     event.preventDefault();
 
     let commentInputBox = document.createElement('div');
@@ -125,23 +127,38 @@ function addComment() {
     commentInputBox.innerHTML = `<input id="comment_userName" type="text">
         <input id="comment_text" type="text">
         <button onClick="sendComment()"><span class="material-symbols-outlined">send</span></button>`
-    userCommentsDiv.appendChild(commentInputBox);
-
+    userCommentsDiv.insertBefore(commentInputBox, userCommentsDiv.firstChild);
+    comment_btn.classList.add("disabled");
 }
 
 function sendComment() {
-
     // hide the input div
-    for (let i = 0; i < posts.length; i++) {
-        posts[i].post_comment[i] = { id: id, comment_text: commentTxtInput.value };
-    }
-    // userCommentsDiv.children[0];
     // taking data from input and store in array and objects 
     // display data at the DOM
+    const commentUsername = document.querySelector("#comment-username");
+    const commentText = document.querySelector("#comment-text");
+    const commentUsernameInput = document.querySelector("#comment_userName");
+    const commentTxtInput = document.querySelector("#comment_text");
 
-    commentUsername.value
-    commentTxtInput.value
+    event.preventDefault();
 
+    if (commentTxtInput.value === "") {
+        return;
+    }
+    let id = 0
+    for (let i = 0; i < posts.length; i++) {
+        id++;
+        posts[i].post_comment.push({ id: id, comment_username: commentUsernameInput.value || "Anonymous", comment_text: commentTxtInput.value });
+    }
+    commentUsernameInput.value = "";
+    commentTxtInput.value = "";
+    for (let i = 0; i < posts.length; i++) {
+        commentUsername.textContent = `${posts[i].post_comment[i].comment_username}`
+        commentText.textContent = `${posts[i].post_comment[i].comment_text}`
+
+        document.querySelector("#comment_input-and-btn").classList.add("hidden")
+        document.querySelector("#comment-btn").classList.remove("disabled");
+    }
 }
 
 function editComment() {
